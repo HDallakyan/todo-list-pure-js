@@ -30,10 +30,16 @@ render(state.todoList, ulElement);
 
 // add new todo
 submitBtn.addEventListener('click', () => {
-  setState([...state, {
-    title: currentValue, 
-    id: state.todoList.length,
-  }]);
+  setState({
+    ...state, 
+    todoList: [
+      ...state.todoList,
+      {
+        title: currentValue, 
+        id: state.todoList.length,
+      }
+    ]
+  });
   render(state.todoList, ulEl);
 });
 
