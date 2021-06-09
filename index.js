@@ -4,8 +4,8 @@ import render from './render.js';
 // we have a main state
 export const state = {
   todoList: [
-    {title: 'go to job', id: 0, checked: true},
-    {title: 'do homework', id: 1},
+    {title: 'go to job', id: 0, isDone: false},
+    {title: 'do homework', id: 1, isDone: false},
   ]
 }
 
@@ -21,6 +21,7 @@ const todoInput = document.querySelector('#todo-input');
 export const setState = (todoList) => {
   // changes our existing state
   state.todoList = todoList;
+  console.log('state', state)
   // and draw again
   render(todoList, ulElement);
 };
@@ -36,6 +37,7 @@ submitBtn.addEventListener('click', () => {
       {
         title: currentValue, 
         id: state.todoList.length,
+        isDone: false,
       }
     ]);
   render(state.todoList, ulElement);

@@ -1,5 +1,5 @@
 import handleRemove from './delete.js';
-// import handleCheck from './check.js';
+import handleCheck from './check.js';
 
 export default function render(todoList, ulElement) {
   ulElement.innerHTML = '';
@@ -11,7 +11,13 @@ export default function render(todoList, ulElement) {
       const deleteBtnText = document.createTextNode('Delete');
 
       const checkBtnElement = document.createElement('button');
-      const checkBtnText = document.createTextNode('Undone');
+      let checkBtnText;
+      if(item.isDone) {
+        checkBtnText = document.createTextNode('Done');
+      } else {
+        checkBtnText = document.createTextNode('Undone');
+
+      }
 
       deleteBtnElement.appendChild(deleteBtnText);
       checkBtnElement.appendChild(checkBtnText);
@@ -29,7 +35,7 @@ export default function render(todoList, ulElement) {
       };
 
       checkBtnElement.onclick = function() {
-        handleRemove(item.id);
+        handleCheck(item.id);
       }
     });
   }

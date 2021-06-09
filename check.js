@@ -1,8 +1,17 @@
 import { setState, state } from './index.js';
 
 const handleCheck = (id) => {
-  const newState = state.todoList.filter(item => item.id !== id);
+  const newState = state.todoList.map(item => {
+    if(item.id === id) {
+      return {
+        ...item,
+        isDone: true,
+      }
+    } 
+
+    return item
+  });
   setState(newState)
 }
 
-export default handleRemove;
+export default handleCheck;
